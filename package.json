@@ -1,0 +1,29 @@
+{
+  "name": "hieu_courses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BmHieu/hieu_courses.git"
+  },
+  "keywords": [
+    "courses"
+  ],
+  "author": "HieuBm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BmHieu/hieu_courses/issues"
+  },
+  "homepage": "https://github.com/BmHieu/hieu_courses#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

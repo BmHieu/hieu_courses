@@ -1,32 +1,42 @@
 <div class="container">
-  <h2>Khóa học của bạn</h1>
-    <div class="row">
-      <table class="table mt-4">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Khóa học</th>
-            <th scope="col">Trình độ</th>
-            <th scope="col" colspan="2">Cập nhật cuối cùng</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each courses}}
-          <tr>
-            <th scope="row">{{sum @index 1}}</th>
-            <td>{{this.name}}</td>
-            <td>{{this.levels}}</td>
-            <td>{{this.updatedAt}}</td>
-            <td>
-              <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-              <a href="/courses/{{this._id}}" class="btn btn-link" data-toggle="modal" data-target="#checkDeleteModal"
-                data-id="{{this._id}}">Xóa</a>
-            </td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
+  <div>
+    <h2>Khóa học của bạn</h1>
+      <a href="/me/recycle/courses/">Thùng rác ({{countDeleted}})</a>
+  </div>
+  <div class="row">
+    <table class="table mt-4">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Khóa học</th>
+          <th scope="col">Trình độ</th>
+          <th scope="col" colspan="2">Cập nhật cuối cùng</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each courses}}
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.name}}</td>
+          <td>{{this.levels}}</td>
+          <td>{{this.updatedAt}}</td>
+          <td>
+            <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+            <a href="/courses/{{this._id}}" class="btn btn-link" data-toggle="modal" data-target="#checkDeleteModal"
+              data-id="{{this._id}}">Xóa</a>
+          </td>
+        </tr>
+        {{else}}
+        <tr>
+          <td colspan="5" class="text-center">
+            Bạn chưa đăng khóa học nào.
+            <a href="/courses/create">Đăng khóa học</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="modal" tabindex="-1" role="dialog" id="checkDeleteModal">
@@ -62,9 +72,9 @@
       courseId = button.data('id')// Extract info from data-* attributes
     })
 
-  
+
     btnDeteleCourse.onclick = function () {
-      formDeteleCourse.action ='/courses/' + courseId + '?_method=DELETE'
+      formDeteleCourse.action = '/courses/' + courseId + '?_method=DELETE'
       formDeteleCourse.submit()
     }
   })
